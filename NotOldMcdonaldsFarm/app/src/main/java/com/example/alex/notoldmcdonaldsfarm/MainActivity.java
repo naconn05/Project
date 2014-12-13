@@ -1,8 +1,7 @@
 package com.example.alex.notoldmcdonaldsfarm;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,20 +18,17 @@ public class MainActivity extends Activity {
         GridView gridview = (GridView) findViewById(R.id.gridview);
         gridview.setAdapter(new ImageAdapter(this));
 
-                gridview.setOnItemClickListener(new AdapterView.OnItemClickListener()
-                {
-                    public void onItemClick(AdapterView<?> parent, View v, int positionBasic, long id) {
-                AnimalInfo animalInfo = new AnimalInfo();
-                FragmentManager manager = getFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.add(R.id.Animal, animalInfo);
-                transaction.commit();
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Intent intent = new Intent(v.getContext(), AnimalDetail.class);
+
+                startActivity(intent);
             }
         });
     }
-}
-/*
-    @Override
+
+
+   /* @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
@@ -48,6 +44,5 @@ public class MainActivity extends Activity {
         if (id == R.id.action_settings) {
             return true;
         }
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);*/
     }
-}*/
